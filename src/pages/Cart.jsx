@@ -11,8 +11,7 @@ import { useHistory } from "react-router";
 import { removeQuantity } from "../redux/cartRedux";
 import { Delete } from "@material-ui/icons";
 
-const KEY =
-  "pk_test_51KKlUBSHsXScwEgekG0yO1lH0qR6vyCkiMHPOpuqg4iZjuCNgPnYVuzaCeDvsELK4tKnUfOJuyijRSFG887S96we00QUv4PNiH";
+const KEY = "pk_test_51KKlUBSHsXScwEgekG0yO1lH0qR6vyCkiMHPOpuqg4iZjuCNgPnYVuzaCeDvsELK4tKnUfOJuyijRSFG887S96we00QUv4PNiH";
 
 const Container = styled.div``;
 
@@ -169,6 +168,7 @@ const Cart = () => {
   const history = useHistory();
   const onToken = (token) => {
     setStripeToken(token);
+    console.log(token);
   };
 
   useEffect(() => {
@@ -182,6 +182,7 @@ const Cart = () => {
           stripeData: res.data,
           products: cart,
         });
+        console.log(res);
       } catch {}
     };
     stripeToken && makeRequest();
@@ -215,8 +216,8 @@ const Cart = () => {
             <>
               {cart.total ? (
                 <StripeCheckout
-                  name="Lama Shop"
-                  image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                  name="xrayed Shop"
+                  image="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/shopping-online.jpg"
                   billingAddress
                   shippingAddress
                   description={`Your total is $${cart.total}`}
@@ -302,8 +303,8 @@ const Cart = () => {
               <>
                 {cart.total ? (
                   <StripeCheckout
-                    name="Lama Shop"
-                    image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                    name="xrayed Shop"
+                    image="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/shopping-online.jpg"
                     billingAddress
                     shippingAddress
                     description={`Your total is $${cart.total}`}
@@ -314,9 +315,7 @@ const Cart = () => {
                     <Button>CHECKOUT NOW</Button>
                   </StripeCheckout>
                 ) : (
-                  <Button type="none">
-                    YOUR CART IS EMPTY
-                  </Button>
+                  <Button type="none">YOUR CART IS EMPTY</Button>
                 )}
               </>
             ) : (
@@ -331,25 +330,5 @@ const Cart = () => {
     </Container>
   );
 };
-
-// function Quant({ product }) {
-//   let setUpdateprod;
-//   [product.quantity, setUpdateprod] = useState(product.quantity);
-//   const HandleUpd = (product, setUpdateprod) => {
-//     // setUpdateprod(product.quantity+1)
-//     console.log(product.quantity);
-//   };
-//   return (
-// <ProductAmountContainer>
-//   <Add
-//     style={{ cursor: "pointer" }}
-//     onClick={HandleUpd(product, setUpdateprod)}
-//   />
-//   <ProductAmount>{product.quantity}</ProductAmount>
-//   <Remove style={{ cursor: "pointer" }} />
-// </ProductAmountContainer>
-//   );
-
-// }
 
 export default Cart;
