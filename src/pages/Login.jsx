@@ -58,12 +58,7 @@ const Button = styled.button`
   }
 `;
 
-const Alink = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
+
 
 const Error = styled.span`
   color: red;
