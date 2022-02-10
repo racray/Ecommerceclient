@@ -183,7 +183,9 @@ const Cart = () => {
           products: cart,
         });
         console.log(res);
-      } catch {}
+      } catch(err) {
+        console.log(err);
+      }
     };
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, history, cart]);
